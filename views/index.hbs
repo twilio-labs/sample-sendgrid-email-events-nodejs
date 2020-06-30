@@ -1,0 +1,30 @@
+<h1>{{title}}</h1>
+<p>Welcome! Type in your email at the bottom to send it.</p>
+<div class="card m-3 mt-5">
+  <form class="card-body" id="emailForm">
+    <h2 class="card-title">Send an Email</h2>
+    <div class="form-group">
+      <label for="toInput">Receipient address:</label>
+      <input class="form-control" id="toInput" name="to" type="email" aria-describedby="emailHelp" required="required"
+        placeholder="test@example.com" />
+      <small id="emailHelp">When you click "Send Message" we'll send an Email to
+        that address using your Twilio SendGrid Account</small>
+    </div>
+    <div class="form-group">
+      <label for="subjectInput">Subject:</label>
+      <input class="form-control" id="subjectInput" name="subject" type="text" required="required"
+        placeholder="Your subject line..." />
+    </div>
+    <div class="form-group">
+      <label for="bodyInput">Message to send:</label>
+      <input class="form-control" id="bodyInput" name="body" type="text" required="required"
+        placeholder="type in your message..." />
+    </div>
+    <button class="btn btn-primary" type="submit">Send Message</button>
+    <div class="alert alert-success mt-4 d-none" id="dialog" role="alert">
+      <h4 class="alert-heading" id="dialogTitle">Email Sent!</h4>
+      <p id="dialogContent">placeholder</p>
+      <p><a href="/sent">See all sent emails</a></p>
+    </div>
+  </form>
+</div>

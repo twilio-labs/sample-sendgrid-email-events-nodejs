@@ -1,0 +1,44 @@
+{
+  "name": "Send Email Interface",
+  "description": "A template for sending Emails and tracking related events",
+  "website": "https://twilio.com",
+  "logo": "https://www.twilio.com/marketing/bundles/marketing/img/favicons/favicon_114.png",
+  "success_url": "/",
+  "addons": [],
+  "keywords": ["nodejs", "twilio", "sendgrid"],
+  "env": {
+    "SENDGRID_API_KEY": {
+      "description": "Your Twilio SendGrid API key from sendgrid.com",
+      "value": ""
+    },
+    "SENDER_EMAIL": {
+      "description": "Valid Email Address to send emails from",
+      "value": ""
+    },
+    "USERS": {
+      "description": "Valid Email Address to send emails from",
+      "value": "List of users and passwords that should have example to this. Example: user1,password1;user2,password2"
+    },
+    "SENDGRID_WEBHOOK_PUBLIC_KEY": {
+      "description": "Public Key for Twilio SendGrid Event Webhook Verification",
+      "value": "",
+      "required": false
+    },
+    "TWILIO_ACCOUNT_SID": {
+      "description": "Your Twilio Account SID",
+      "value": ""
+    },
+    "TWILIO_AUTH_TOKEN": {
+      "description": "Your Twilio Auth Token",
+      "value": ""
+    },
+    "TWILIO_PHONE_NUMBER": {
+      "description": "An SMS-capabable Twilio phone number in E.164 format",
+      "value": ""
+    },
+    "NOTIFY_PHONE_NUMBER": {
+      "description": "A phone number that will receive SMS notifications. In E.164 format",
+      "value": ""
+    }
+  }
+}
