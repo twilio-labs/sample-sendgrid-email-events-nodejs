@@ -1,10 +1,48 @@
 const express = require('express');
 const twilio = require('twilio');
+const { EventWebhook, EventWebhookHeader } = require('@sendgrid/eventwebhook');
 const db = require('../db');
 const cfg = require('../config');
 
 /* eslint-disable new-cap */
 const router = express.Router();
+
+/**
+ * Sends an SMS to the configured phone number via Twilio to notify that an
+ * email has been opened.
+ * @param {express.Request & { rawBody: string }} req Request object
+ * @param {express.Response} res Response object
+ * @param {Function} next Next request handler
+ */
+function verifySendGrid(req, res, next) {
+  if (process.env.NODE_ENV === 'test') {
+    next();
+    return;
+  }
+
+  const eventWebhook = new EventWebhook();
+  const payload = req.rawBody;
+  const timestamp = req.get(EventWebhookHeader.TIMESTAMP());
+  const signature = req.get(EventWebhookHeader.SIGNATURE());
+  const publicKey = cfg.sendGridWebhookPublicKey;
+  const ecPublicKey = eventWebhook.convertPublicKeyToECDSA(publicKey);
+
+  try {
+    const valid = eventWebhook.verifySignature(
+      ecPublicKey,
+      payload,
+      signature,
+      timestamp
+    );
+    if (valid) {
+      next();
+      return;
+    }
+  } catch (err) {
+    // carry on
+  }
+  res.status(401).send();
+}
 
 /**
  * Sends an SMS to the configured phone number via Twilio to notify that an
@@ -27,7 +65,7 @@ async function sendSMSNotification(recipientEmail) {
 }
 
 // POST: /events/email
-router.post('/email', async (req, res, next) => {
+router.post('/email', verifySendGrid, async (req, res, next) => {
   const events = req.body;
 
   const normalizedEvents = events
