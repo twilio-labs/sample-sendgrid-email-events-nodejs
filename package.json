@@ -47,11 +47,11 @@
     "lowdb": "^1.0.0",
     "morgan": "^1.10.0",
     "serve-favicon": "^2.5.0",
-    "twilio": "^3.47.0"
+    "twilio": "^3.54.2"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
-    "cypress": "^4.9.0",
+    "cypress": "^6.6.0",
     "dotenv-safe": "^8.2.0",
     "eslint": "^7.3.1",
     "eslint-config-google": "^0.14.0",
