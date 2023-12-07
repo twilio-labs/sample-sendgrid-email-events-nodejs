@@ -35,12 +35,12 @@
     "node": ">=10.x"
   },
   "dependencies": {
-    "@sendgrid/eventwebhook": "^7.2.1",
+    "@sendgrid/eventwebhook": "^7.2.6",
     "@sendgrid/mail": "^7.2.1",
     "body-parser": "^1.19.0",
     "configure-env": "^1.0.0",
     "cookie-parser": "~1.4.5",
-    "debug": ">=4.1.1",
+    "debug": ">=4.3.1",
     "express": "^4.17.1",
     "express-basic-auth": "^1.2.0",
     "express-handlebars": "^4.0.4",
